@@ -1,5 +1,5 @@
 'use client';
-import ProductsSlider from "@/components/sections/home/ProductsSlider"
+import ProductsSlider from "@/components/sections/home/Gallery"
 import Link from "next/link";
 
 export default function ProductDetailPage() {

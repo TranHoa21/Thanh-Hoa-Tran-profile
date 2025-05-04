@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
-import KnowZodiacSection from "@/components/sections/home/KnowZodiacSection";
+import KnowZodiacSection from "@/components/sections/home/DesertSafariPackages";
 import VastuShastra from "@/components/sections/home/VastuShastra"
 import Link from "next/link";
-import CustomerTestimonials from "@/components/sections/home/CustomerTestimonials";
+import CustomerTestimonials from "@/components/sections/home/TourGuides";
 
 const AppointmentPage = () => {
     return (

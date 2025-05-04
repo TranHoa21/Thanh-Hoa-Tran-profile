@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import WhyUs from "@/components/sections/home/WhyUs";
-import CustomerTestimonials from "@/components/sections/home/CustomerTestimonials";
-import WhyChooseUs from "@/components/sections/home/WhyChooseUs";
+import WhyUs from "@/components/sections/home/About";
+import CustomerTestimonials from "@/components/sections/home/TourGuides";
+import WhyChooseUs from "@/components/sections/home/Testimonials";
 import Link from "next/link";
 const AboutPage = () => {
     return (

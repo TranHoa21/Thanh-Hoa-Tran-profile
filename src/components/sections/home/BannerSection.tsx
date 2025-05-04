@@ -1,90 +1,106 @@
-'use client';
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import "@/style/home/BannerSection.css";
-import { motion } from "framer-motion";
-import Image from "next/image";
-
-export default function BannerSection() {
-    const router = useRouter();
-    const [isClicked, setIsClicked] = useState(false);
-
-    const handleClick = () => {
-        setIsClicked(true);
-        setTimeout(() => {
-            router.push("/san-pham");
-        }, 300); // Thời gian delay hiệu ứng trước khi chuyển trang
-    };
-
-
+export default function HeroSection() {
     return (
-        <motion.section
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            id="hero"
-            className="text-white m-0 sm:m-auto py-4 sm:py-6 md:py-12 bg-[#0B2239] relative"
-            style={{ backgroundImage: `url("/images/bg1.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-        >
-            <button className="hidden md:block absolute left-6 top-1/2 transform -translate-y-1/2 bg-[#102C47] text-white text-xs px-5 py-2 hover:bg-orange-500 transition-all z-20" style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%)' }}>
-                ◀ PREV
-            </button>
+        <section className="relative bg-[url('/images/background.webp')] bg-cover bg-center text-white min-h-[90vh] flex items-center justify-center">
+            {/* Lớp phủ nền tối như bạn đã có */}
+            <div className="absolute inset-0 bg-black/50"></div>
 
-            <button className="hidden md:block absolute right-6 top-1/2 transform -translate-y-1/2 bg-[#102C47] text-white text-xs px-5 py-2 hover:bg-orange-500 transition-all z-20" style={{ clipPath: 'polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%)' }}>
-                NEXT ▶
-            </button>
-
-            <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10">
-
-                {/* Left Content */}
-                <div className="flex-1 text-left sm:pl-8 sm:mt-0">
-                    <p className="text-orange-500 text-sm sm:text-lg font-semibold mb-2">What is Your Sign ?</p>
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
-                        Read Your Daily <br /> Horoscope Today
-                    </h1>
-                    <p className="text-gray-300 text-sm sm:text-base mb-6">
-                        Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore etesde dolore magna aliqua suspendisse and the gravida.
-                    </p>
-                    <button
-                        onClick={handleClick}
-                        className={`inline-block bg-orange-500 text-white font-medium px-4 py-3 rounded-full
-          transition-all duration-300 ease-in-out transform 
-          ${isClicked ? 'scale-90 opacity-80' : 'hover:scale-105 hover:shadow-lg'}`}
-                        style={{
-                            clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)'
-                        }}
-                    >
-                        READ MORE
+            {/* Nội dung chính */}
+            <div className="relative z-10 text-center px-4">
+                <p className="text-orange-400 tracking-widest uppercase drop-shadow-md">
+                    Safari Adventures in Zambia
+                </p>
+                <h1 className="text-4xl md:text-6xl font-bold my-4 drop-shadow-lg">
+                    Begin your journey with Mufilika Tours and Safaris
+                </h1>
+                <p className="max-w-xl mx-auto mb-6 drop-shadow-md">
+                    Experience the majestic Victoria Falls, explore untamed wilderness, and create unforgettable memories in the heart of Africa.
+                </p>
+                <div className="flex justify-center gap-4">
+                    <button className="bg-[#A67C52] text-white px-6 py-3 rounded-md shadow-md hover:bg-[#916842] transition">
+                        Plan Trip
+                    </button>
+                    <button className="border border-[#A67C52] text-[#A67C52] px-6 py-3 rounded-md bg-white/10 backdrop-blur hover:bg-white/20 transition">
+                        Explore More
                     </button>
                 </div>
-
-                {/* Right Image */}
-                <motion.div
-                    className="flex justify-center md:justify-end w-full sm:w-auto"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="relative w-[400px] sm:w-[400px] md:w-[600px] max-w-full floating-image">
-                        <Image
-                            src="/images/snapedit_1745651487399.png"
-                            alt="Horoscope Chart"
-                            width={500}
-                            height={500}
-                            className="rounded-full w-full object-cover"
-                            loading="lazy"
-                        />
-
-                    </div>
-                </motion.div>
-
             </div>
-        </motion.section>
 
+            {/* Form đè nửa dưới */}
+            <div className="absolute bottom-0 bottom-[-20%] lg:bottom-[-10%] md:bottom-[-10%] sm:bottom-[-15%] left-1/2 transform -translate-x-1/2 z-20 w-full max-w-6xl px-4">
+                <div className="bg-white rounded-2xl shadow-2xl px-6 py-6 ring-1 ring-black/5">
+                    <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-end">
+                        {/* Destination */}
+                        <div>
+                            <label htmlFor="destination" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Destination
+                            </label>
+                            <select
+                                id="destination"
+                                name="destination"
+                                className="block w-full rounded-lg border border-gray-300 bg-white text-gray-800 shadow-sm focus:ring-orange-500 focus:border-orange-500 text-sm px-4 py-2"
+                            >
+                                <option>UAE</option>
+                                <option>Egypt</option>
+                                <option>Morocco</option>
+                                <option>Africa</option>
+                            </select>
+                        </div>
 
+                        {/* Departure Date */}
+                        <div>
+                            <label htmlFor="departure" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Departure Date
+                            </label>
+                            <input
+                                type="date"
+                                id="departure"
+                                name="departure"
+                                className="block w-full rounded-lg border border-gray-300 bg-white text-gray-800 shadow-sm focus:ring-orange-500 focus:border-orange-500 text-sm px-4 py-2"
+                            />
+                        </div>
 
+                        {/* Tour Type */}
+                        <div>
+                            <label htmlFor="tourType" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Tour Type
+                            </label>
+                            <select
+                                id="tourType"
+                                name="tourType"
+                                className="block w-full rounded-lg border border-gray-300 bg-white text-gray-800 shadow-sm focus:ring-orange-500 focus:border-orange-500 text-sm px-4 py-2"
+                            >
+                                <option>Desert Adventure</option>
+                                <option>Cultural Experience</option>
+                                <option>Luxury Safari</option>
+                            </select>
+                        </div>
 
+                        {/* Submit Button */}
+                        <div>
+                            <button
+                                type="submit"
+                                className="w-full inline-flex justify-center items-center gap-2 rounded-xl bg-[#A67C52] hover:bg-[#916842] text-white font-semibold py-3 px-4 shadow-lg text-sm transition duration-150"
+                            >
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    />
+                                </svg>
+                                Search Tours
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
     );
 }

@@ -1,28 +1,30 @@
 'use client';
 import BannerSection from "@/components/sections/home/BannerSection";
-import Services from "@/components/sections/home/Services"
+import TopDestinations from "@/components/sections/home/TopDestinations"
 import React from 'react';
-import WhyUs from "@/components/sections/home/WhyUs";
-import KnowZodiacSection from "@/components/sections/home/KnowZodiacSection"
-import ZodiacSection from "@/components/sections/home/ZodiacSection";
-import BlogPreviewSection from "@/components/sections/home/BlogPreviewSection";
-import CustomerTestimonials from "@/components/sections/home/CustomerTestimonials";
+import About from "@/components/sections/home/About";
+import DesertSafariPackages from "@/components/sections/home/DesertSafariPackages"
 import WhyChooseUs from "@/components/sections/home/WhyChooseUs";
-import ProductsSlider from "@/components/sections/home/ProductsSlider";
-import DailyOverview from "@/components/sections/home/DailyOverview"
+import BlogPreviewSection from "@/components/sections/home/BlogPreviewSection";
+import TourGuides from "@/components/sections/home/TourGuides";
+import Testimonials from "@/components/sections/home/Testimonials";
+import Gallery from "@/components/sections/home/Gallery";
+import BookingForm from "@/components/sections/home/BookingForm";
+import FAQ from "@/components/sections/home/FAQ"
 const HomePage = () => {
     return (
         <>
             <BannerSection />
-            <WhyUs />
-            <Services />
-            <ZodiacSection />
-            <KnowZodiacSection />
-            <CustomerTestimonials />
+            <About />
+            <TopDestinations />
             <WhyChooseUs />
+            <DesertSafariPackages />
+            <TourGuides />
+            <Testimonials />
+            <FAQ />
+            <Gallery />
+            <BookingForm />
             <BlogPreviewSection />
-            <ProductsSlider />
-            <DailyOverview />
         </>
     );
 };

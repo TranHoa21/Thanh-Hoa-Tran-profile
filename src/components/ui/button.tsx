@@ -11,10 +11,10 @@ export const Button: React.FC<ButtonProps> = ({
     size = 'md',
     ...props
 }) => {
-    const base = 'rounded-full font-medium transition focus:outline-none';
+    const base = 'uppercase font-semibold transition-colors duration-200 focus:outline-none';
 
     const variants = {
-        primary: 'bg-[#FF6B6B] text-white hover:bg-[#e95b5b]',
+        primary: 'bg-[#A67C52] text-white hover:bg-[#8c6844]',
         secondary: 'bg-[#FFF1E6] text-[#333333] hover:bg-[#ffe7d2] border border-[#F49E9E]',
         outline: 'border border-gray-400 text-gray-700 bg-white hover:bg-gray-100',
         destructive: 'bg-red-500 text-white hover:bg-red-600',
@@ -26,8 +26,13 @@ export const Button: React.FC<ButtonProps> = ({
         lg: 'px-5 py-3 text-lg',
     };
 
+    const noRadius = 'rounded-none';
+
     return (
-        <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
+        <button
+            className={`${base} ${variants[variant]} ${sizes[size]} ${noRadius} ${className}`}
+            {...props}
+        >
             {props.children}
         </button>
     );

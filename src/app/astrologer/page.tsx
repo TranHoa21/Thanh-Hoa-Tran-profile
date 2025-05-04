@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import CustomerTestimonials from "@/components/sections/home/CustomerTestimonials";
-import WhyChooseUs from "@/components/sections/home/WhyChooseUs";
+import CustomerTestimonials from "@/components/sections/home/TourGuides";
+import WhyChooseUs from "@/components/sections/home/Testimonials";
 import TeamSection from "@/components/sections/home/TeamSection"
 import Link from "next/link";
 const AppointmentPage = () => {

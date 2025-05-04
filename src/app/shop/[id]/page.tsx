@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ProductsSlider from "@/components/sections/home/ProductsSlider";
-import CustomerTestimonials from "@/components/sections/home/CustomerTestimonials"
+import ProductsSlider from "@/components/sections/home/Gallery";
+import CustomerTestimonials from "@/components/sections/home/TourGuides"
 
 const productImages = [
     "/assets/images/prod1.jpg",
