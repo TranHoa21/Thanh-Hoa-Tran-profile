@@ -1,75 +1,93 @@
 'use client';
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "Features", href: "#features" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Resume", href: "#resume" },
+  { label: "Clients", href: "#clients" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contacts" },
+];
 
-export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const Header = () => {
+  const [activeId, setActiveId] = useState("home");
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  // Scroll to section smoothly
+  const handleNavClick = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+
+      // 👉 Thêm dòng này để đổi URL
+      window.history.replaceState(null, "", href);
+
+      // 👉 Cập nhật activeId luôn để nav highlight ngay lập tức
+      setActiveId(href.replace("#", ""));
+    }
+  }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id && id !== activeId) {
+              setActiveId(id);
+              window.history.replaceState(null, "", `#${id}`);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    navItems.forEach((item) => {
+      const el = document.getElementById(item.href.replace("#", ""));
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [activeId]);
+
 
   return (
-    <header className="bg-gradient-to-b from-white/90 to-transparent fixed top-0 left-0 w-full z-50">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-4">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#1e1f26] text-white px-6 py-4 shadow-md">
+      <div className="max-w-[1600px] mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/">
-          <div className="relative h-12 w-32">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              layout="fill"
-              objectFit="contain"
-              priority
-            />
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-800">
-          <Link href="/" className="hover:text-[#14190f]">Home</Link>
-          <Link href="/about" className="hover:text-[#14190f]">About us</Link>
-          <Link href="/packages" className="hover:text-[#14190f]">Packages</Link>
-          <Link href="/blog" className="hover:text-[#14190f]">Blog</Link>
-          <Link href="/contact-us" className="hover:text-[#14190f]">Contact us</Link>
-        </nav>
-
-        {/* Book Now Button - Desktop */}
-        <Link
-          href="/book"
-          className="hidden md:inline-block px-6 py-2 border border-gray-600 text-gray-800 hover:bg-[#14190f] hover:text-white rounded transition"
-        >
-          Book Now
-        </Link>
-
-        {/* Hamburger Menu - Mobile/Tablet */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-2xl text-gray-800"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-3 text-sm font-medium text-gray-800">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="block hover:text-[#14190f]">Home</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)} className="block hover:text-[#14190f]">About us</Link>
-          <Link href="/packages" onClick={() => setMenuOpen(false)} className="block hover:text-[#14190f]">Packages</Link>
-          <Link href="/blog" onClick={() => setMenuOpen(false)} className="block hover:text-[#14190f]">Blog</Link>
-          <Link href="/contact-us" onClick={() => setMenuOpen(false)} className="block hover:text-[#14190f]">Contact us</Link>
-          <Link
-            href="/book"
-            onClick={() => setMenuOpen(false)}
-            className="inline-block w-full text-center border border-gray-600 text-gray-800 hover:bg-[#14190f] hover:text-white rounded px-4 py-2 transition"
-          >
-            Book Now
-          </Link>
+        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleNavClick("#home")}>
+          <Image
+            src="/images/profile.png"
+            alt="Logo"
+            width={48}
+            height={48}
+            className="rounded-full border border-gray-700"
+          />
+          <span className="ml-2 text-base font-medium">INBIO</span>
         </div>
-      )}
+
+        {/* Navigation */}
+        <nav className="hidden xl:flex flex-1 justify-center items-center space-x-8 text-[13px] uppercase tracking-wide">
+          {navItems.map((item) => (
+            <span
+              key={item.href}
+              onClick={() => handleNavClick(item.href)}
+              className={`cursor-pointer transition duration-150 ${activeId === item.href.replace("#", "") ? "text-pink-500 font-bold" : "hover:text-pink-500"
+                }`}
+            >
+              {item.label}
+            </span>
+          ))}
+        </nav>
+      </div>
     </header>
   );
-}
+};
+
+export default Header;

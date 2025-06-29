@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ProductsSlider from "@/components/sections/home/Gallery";
-import CustomerTestimonials from "@/components/sections/home/TourGuides"
+import CustomerTestimonials from "@/components/sections/home/AwesomeClients"
 
 const productImages = [
     "/assets/images/prod1.jpg",

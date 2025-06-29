@@ -1,30 +1,29 @@
 'use client';
 import BannerSection from "@/components/sections/home/BannerSection";
-import TopDestinations from "@/components/sections/home/TopDestinations"
+import PortfolioSection from "@/components/sections/home/PortfolioSection";
 import React from 'react';
-import About from "@/components/sections/home/About";
-import DesertSafariPackages from "@/components/sections/home/DesertSafariPackages"
-import WhyChooseUs from "@/components/sections/home/WhyChooseUs";
-import BlogPreviewSection from "@/components/sections/home/BlogPreviewSection";
-import TourGuides from "@/components/sections/home/TourGuides";
-import Testimonials from "@/components/sections/home/Testimonials";
-import Gallery from "@/components/sections/home/Gallery";
-import BookingForm from "@/components/sections/home/BookingForm";
-import FAQ from "@/components/sections/home/FAQ"
+import FeaturesSection from "@/components/sections/home/FeaturesSection";
+import TestimonialSlider from "@/components/sections/home/TestimonialSlider";
+import ResumeSection from "@/components/sections/home/ResumeSection";
+import AwesomeClients from "@/components/sections/home/AwesomeClients";
+import PricingSection from "@/components/sections/home/PricingSection";
+import BlogSection from "@/components/sections/home/BlogSection";
+import ContactSection from "@/components/sections/home/ContactSection";
+
 const HomePage = () => {
     return (
         <>
-            <BannerSection />
-            <About />
-            <TopDestinations />
-            <WhyChooseUs />
-            <DesertSafariPackages />
-            <TourGuides />
-            <Testimonials />
-            <FAQ />
-            <Gallery />
-            <BookingForm />
-            <BlogPreviewSection />
+            <div id="home"><BannerSection /></div>
+            <div id="features"><FeaturesSection /></div>
+            <div id="portfolio"><PortfolioSection /></div>
+            <div id="resume"><ResumeSection /></div>
+            <div id="clients">
+                <TestimonialSlider />
+                <AwesomeClients />
+            </div>
+            <div id="pricing"><PricingSection /></div>
+            <div id="blog"><BlogSection /></div>
+            <div id="contacts"><ContactSection /></div>
         </>
     );
 };

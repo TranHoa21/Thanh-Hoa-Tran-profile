@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Import các font từ Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
   --background: #ffffff;
@@ -10,8 +10,11 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
   --font-handwriting: 'Dancing Script', cursive;
+  --font-ui: 'Poppins', sans-serif;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -34,7 +37,12 @@
   .handwriting {
     font-family: var(--font-handwriting);
   }
+
+  .ui-font {
+    font-family: var(--font-ui);
+  }
 }
+
 .prose h1 {
   @apply text-4xl text-[#FF6B6B] font-bold mt-[20px] mb-[5px];
 }
@@ -42,6 +50,7 @@
 .prose h2 {
   @apply text-3xl text-[#FF6B6B] font-semibold mt-10 mb-4;
 }
+
 .prose img {
-  @apply rounded-md shadow my-[10px]
+  @apply rounded-md shadow my-[10px];
 }
